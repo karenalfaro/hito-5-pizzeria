@@ -1,36 +1,33 @@
+import { Link } from 'react-router-dom'
 import { formatPrice } from '../utils/formatPrice'
 
 const Navbar = () => {
-  // Variables que pide el desafío
   const total = 25000
-  const token = false // false = usuario NO logueado
+  const token = false
 
   return (
     <nav className="navbar navbar-dark bg-dark px-3">
       <div>
         <span className="navbar-brand">Pizzería Mamma Mia!</span>
 
-        {/* Home se muestra siempre */}
-        <button className="btn btn-outline-light btn-sm me-2">🍕 Home</button>
+        <Link to="/" className="btn btn-outline-light btn-sm me-2">🍕 Home</Link>
 
-        {/* Operador ternario: condición ? (si es true) : (si es false) */}
         {token ? (
           <>
-            <button className="btn btn-outline-light btn-sm me-2">🔓 Profile</button>
+            <Link to="/profile" className="btn btn-outline-light btn-sm me-2">🔓 Profile</Link>
             <button className="btn btn-outline-light btn-sm">🔒 Logout</button>
           </>
         ) : (
           <>
-            <button className="btn btn-outline-light btn-sm me-2">🔐 Login</button>
-            <button className="btn btn-outline-light btn-sm">🔐 Register</button>
+            <Link to="/login" className="btn btn-outline-light btn-sm me-2">🔐 Login</Link>
+            <Link to="/register" className="btn btn-outline-light btn-sm">🔐 Register</Link>
           </>
         )}
       </div>
 
-      {/* Total se muestra siempre */}
-      <button className="btn btn-outline-info btn-sm">
+      <Link to="/cart" className="btn btn-outline-info btn-sm">
         🛒 Total: ${formatPrice(total)}
-      </button>
+      </Link>
     </nav>
   )
 }
